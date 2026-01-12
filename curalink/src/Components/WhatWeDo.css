@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+
+:root {
+  --color-primary-teal: #12b0a9; /* CuraLink Main Color */
+  --color-background-dark: #101010; 
+  --color-background-light: #f4f6f8; 
+  --color-text-light: #e0e0e0;
+  --color-text-dark: #333333;
+  --color-shadow-primary: rgba(18, 176, 169, 0.4);
+  --color-gray-muted: #6b7280;
+}
+
+.whatWeDoContainer {
+  display: flex;
+  min-height: 80vh; 
+  font-family: 'Inter', sans-serif;
+  position: relative;
+}
+
+/* --- Left Column (Dark, Wavy Background) --- */
+.leftColumn {
+    flex: 1;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+  overflow: hidden;
+
+  /* Sticky */
+  position: sticky;
+  top: 0; /* Keep fixed at top */
+
+  height: 100vh; /* Fill full height */
+
+  /* Fade-in animation */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1.2s ease;
+}
+
+.leftColumn.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leftContent {
+  /* FIX: Ensure content text is left-aligned within its max-width container */
+  text-align: left; 
+  max-width: 400px;
+  z-index: 10;
+  padding-right: 2rem; /* Spacing from the flex edge */
+}
+
+.sectionTitle {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #333333; 
+  margin-bottom: 1rem;
+  text-shadow: 10px 10px 10px rgba(31, 51, 50, 0.61);
+}
+
+.sectionSubtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #253d49;
+  text-shadow: 8px 10px 5px rgba(40, 49, 49, 0.363);
+}
+
+/* --- Right Column (Light, Scrollable Features) --- */
+.rightColumnScroll {
+  flex: 1;
+  /* background-color: #e0e0e06e; */
+  border-radius: 50px;
+  padding: 4rem;
+  overflow-y: scroll; /* Makes this column independently scrollable */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.rightColumnScroll::-webkit-scrollbar {
+    display: none;
+}
+
+.featureList {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; 
+  max-width: 500px; 
+  margin: 0 auto;
+}
+
+/* --- Individual Feature Card Styles --- */
+.featureCard {
+  display: block;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  text-decoration: none;
+  border-left: 5px solid var(--color-background-light); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  
+  transition: transform 0.3s ease, border-left 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureCard:hover,
+.featureCard:focus {
+  transform: translateY(-5px);
+  border-left: 5px solid var(--color-primary-teal);
+  box-shadow: 0 8px 20px var(--color-shadow-primary);
+}
+
+.cardIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.cardTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-dark);
+  /* background-color: blue; */
+  margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  color: var(--color-gray-muted);
+  margin-bottom: 1rem;
+}
+
+.cardLink {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-primary-teal);
+  text-decoration: none;
+}
+
+/* --- Responsiveness (Stack columns on small screens) --- */
+@media (max-width: 900px) {
+  .whatWeDoContainer {
+    flex-direction: column;
+  }
+  
+  .leftColumn {
+    min-height: 400px; 
+    text-align: center;
+    padding: 3rem 2rem;
+  }
+  
+  .leftContent {
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .sectionTitle {
+    font-size: 3rem;
+  }
+
+  .rightColumnScroll {
+    overflow-y: visible;
+    padding: 3rem 1.5rem;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .leftColumn {
+    position: static;   /* ❗ Sticky OFF on mobile */
+    height: auto;       /* Let height shrink */
+    padding: 2rem;      /* Less padding for small screens */
+    text-align: center; /* Center text */
+  }
+
+  .sectionTitle{
+    color: #e0e0e0;
+  
+  text-shadow: 
+    2px 2px 4px rgba(0,0,0,0.6),
+    -2px -2px 4px rgba(0,0,0,0.6); 
+  
+
+  /* -webkit-text-stroke: 1px rgba(0,0,0,1); */
+  text-stroke: 1px rgba(0,0,0,1);
+  }
+
+  .heroSectionContainer{
+    padding-bottom: 0%;
+  }
+
+  .leftColumn{
+    min-height: 200px;
+    margin-top: 10%;
+  }
+
+  #whatWeDoCT{
+    color: #101010;
+  }
+
+
+}
